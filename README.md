@@ -4,6 +4,4 @@
 
 ## Running
 
-``` docker run --rm crawler ```
-
-
+```docker run -e URL=https://en.wikipedia.org/wiki/YouTube crawler```
