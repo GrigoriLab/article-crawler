@@ -4,8 +4,8 @@
 
 ## Running
 
-```docker run -v $PWD/images/:/crawler/images -e URL=https://en.wikipedia.org/wiki/YouTube crawler```
+```docker run --rm -v $PWD/db/:/crawler/db -v $PWD/images/:/crawler/images -e URL=https://en.wikipedia.org/wiki/YouTube crawler```
 
 or
 
-```./docker-run.sh```
+```./docker-run.sh https://en.wikipedia.org/wiki/YouTube```

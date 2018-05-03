@@ -9,4 +9,4 @@ if [ "$#" -lt 1 ]
 then
   usage
 fi
-docker run -v $PWD/images/:/crawler/images -e URL=$1 crawler
+docker run --rm -v $PWD/db/:/crawler/db -v $PWD/images/:/crawler/images -e URL=$1 crawler

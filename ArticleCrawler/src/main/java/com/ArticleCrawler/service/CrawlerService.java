@@ -34,7 +34,7 @@ public class CrawlerService {
 
             try {
                 Class.forName("org.sqlite.JDBC");
-                c = DriverManager.getConnection("jdbc:sqlite:crawler.db");
+                c = DriverManager.getConnection("jdbc:sqlite:./db/crawler.db");
                 c.setAutoCommit(false);
                 System.out.println("Opened database successfully");
 
