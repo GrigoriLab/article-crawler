@@ -1,7 +1,5 @@
 package com.ArticleCrawler.service;
 
-import com.ArticleCrawler.data.ArticleEntity;
-import com.ArticleCrawler.data.ArticleRepository;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -72,15 +70,6 @@ public class CrawlerService {
                 System.err.println( e.getClass().getName() + ": " + e.getMessage() );
                 System.exit(0);
             }
-
-
-            ArticleEntity articleEntity = new ArticleEntity();
-            articleEntity.setName(name);
-
-            ArticleRepository.getArticles().add(articleEntity);
-
-            //System.out.println(ArticleRepository.getArticles().get(0).getName());
-
 
         } catch (IOException e) {
             e.printStackTrace();
