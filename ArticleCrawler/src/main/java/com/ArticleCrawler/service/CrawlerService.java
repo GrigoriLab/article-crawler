@@ -8,6 +8,9 @@ import org.jsoup.nodes.Document;
 import java.io.IOException;
 import java.sql.*;
 
+import java.net.*;
+import java.io.*;
+
 public class CrawlerService {
 
 
@@ -23,10 +26,13 @@ public class CrawlerService {
 
             String name = document.select("#firstHeading").text();
             String imageUrl = document.select(".infobox a img").attr("src");
-            String imagePath = "image-path";
+            String imageName = imageUrl.substring(imageUrl.lastIndexOf("/") + 1);
             System.out.println("Article name = " + name);
             System.out.println("Image url = " + imageUrl);
-            System.out.println("Image path = " + imagePath);
+            System.out.println("Image path = " + imageName);
+            String imagePath = "images/" + imageName;
+
+            saveImage("https:" + imageUrl, imagePath);
 
             try {
                 Class.forName("org.sqlite.JDBC");
@@ -79,5 +85,20 @@ public class CrawlerService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public static void saveImage(String imageUrl, String destinationFile) throws IOException {
+        URL url = new URL(imageUrl);
+        InputStream is = url.openStream();
+        OutputStream os = new FileOutputStream(destinationFile);
+
+        byte[] b = new byte[2048];
+        int length;
+
+        while ((length = is.read(b)) != -1) {
+            os.write(b, 0, length);
+        }
+
+        is.close();
+        os.close();
     }
 }
